@@ -1,2 +1,2 @@
-# C-Raytrace-engine
-toy C++ raytrace engine
+# C++-Raytrace-engine
+C++ raytrace engine
