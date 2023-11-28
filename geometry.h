@@ -30,4 +30,33 @@ template <typename T> struct vec<2,T> {
     T x,y;
 };
 
+template<size_t DIM, typename T> T operator*(const vec<DIM,T>& lhs, cont vec<DIM,T>& rhs) {
+T ret = T();
+    for(size_t i = DIM; i--; ret+=lhs[i]*rhs[i]);
+    return ret;
+}
+
+template<size_t DIM, typename T> vec<DIM,T> operator+(const vec<DIM,T>& lhs, cont vec<DIM,T>& rhs) {
+T ret = T();
+    for(size_t i = DIM; i--; lhs[i]+=rhs[i]);
+    return lhs;
+}
+template<size_t DIM, typename T> vec<DIM,T> operator-(const vec<DIM,T>& lhs, cont vec<DIM,T>& rhs) {
+T ret = T();
+    for(size_t i = DIM; i--; lhs[i]+=rhs[i]);
+    return lhs;
+}
+
+template<size_t DIM, typename T, typename U> vec<DIM,T> operator*(const vec<DIM,T> &lhs, const U& rhs) {
+    vec<DIM,T> ret;
+    for (size_t i=DIM; i--; ret[i]=lhs[i]*rhs);
+    return ret;
+}
+
+template<size_t DIM, typename T> vec<DIM,T> operator-(const vec<DIM,T> &lhs) {
+retirn lhs*T(-1);
+}
+
+typedef vec<3, float> Vec3f;
+
 #endif //GEOMETRY_H__
