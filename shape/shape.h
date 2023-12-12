@@ -4,20 +4,30 @@
 #include <cmath>
 #include <vector>
 #include "../geometry.h"
-#include "shape.h"
+#include "material.h"
 
+
+    /**
+     * @brief this is struct of sphere 
+     *
+     * @param Vec3f center 
+     * @param const Vec3f The direction of the ray line
+     * @param float &t0 Length of ray line
+     */
 struct Sphere {
     Vec3f center;
     float radius;
+    Material material;
 
-    Sphere(const Vec3f &c, const float &r): center(c), radius(r) {}
+    Sphere(const Vec3f &c, const float &r, const Material &m): 
+        center(c), radius(r) , material(m){}
 
     /**
-     * @brief Calculate where the ray intersect the spheere
+     * @brief Calculate where the ray intersect the sphere
      *
-     * @tparam const Vec3f &orig the origin of ray line
-     * @tparam const Vec3f The direction of the ray line
-     * @tparam float &t0 Length of ray line
+     * @param const Vec3f &orig the origin of ray line
+     * @param const Vec3f The direction of the ray line
+     * @param float &t0 Length of ray line
      */
     bool ray_intersect(const Vec3f &orig, const Vec3f &dir, float &t0) const {
         Vec3f L = center - orig;
