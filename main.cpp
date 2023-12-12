@@ -7,7 +7,10 @@
 #include "shape/shape.h"
 
 /**
- * @brief defines drawing on a out.ppm file ss
+ * @brief change the colour of sphere if ray hits sphere
+ * @param const Vec3f orig: ray origin
+ * @param const Vec3f dir: direction of ray
+ * @param const Sphere sphere: sphere
  */
 Vec3f cast_ray(const Vec3f &orig, const Vec3f &dir, const Sphere &sphere) {
     float sphere_dist = std::numeric_limits<float>::max();
@@ -18,13 +21,17 @@ Vec3f cast_ray(const Vec3f &orig, const Vec3f &dir, const Sphere &sphere) {
     return Vec3f(0.4, 0.4, 0.3);
 }
 
+/**
+ * @brief render a sphere of a different colour if the ray passes through sphere\
+ * @param sphere
+ */
 void render(const Sphere &sphere) {
     const int width    = 1024;
     const int height   = 768;
-    const int fov      = M_PI/2.;
+    const int fov      = M_PI/2;
     std::vector<Vec3f> framebuffer(width*height);
 
-    #pragma omp parallel for
+    #pragma omp parallel for //run the following in parrallel
     for (size_t j = 0; j<height; j++) {
         for (size_t i = 0; i<width; i++) {
             framebuffer[i+j*width] = Vec3f(j/float(height),i/float(width), 0);
