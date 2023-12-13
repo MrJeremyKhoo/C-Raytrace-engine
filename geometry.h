@@ -46,6 +46,16 @@ template <typename T> struct vec<3,T> {
     T x,y,z;
 };
 
+template <typename T> struct vec<2,T> {
+    vec() : x(T()), y(T()) {}
+    vec(T X, T Y) : x(X), y(Y){}
+          T& operator[](const size_t i)       { assert(i<2); return i<=0 ? x : (1==i ? y : z); }
+    const T& operator[](const size_t i) const { assert(i<2); return i<=0 ? x : (1==i ? y : z); }
+    float norm() const { return std::sqrt(x*x+y*y); }
+    vec<3,T> & normalize(T l=1) { *this = (*this)*(l/norm()); return *this; }
+    T x,y,z;
+};
+
 /**
  * @brief operator overload to do element-wise multiplication
  * @tparam 1st dimentional vector
@@ -97,5 +107,6 @@ template<size_t DIM,typename T> vec<DIM,T> operator-(const vec<DIM,T> &lhs) {
 }
 
 typedef vec<3, float> Vec3f;
+typedef vec<2, float> Vec2f;
 
 #endif //__GEOMETRY_H__
