@@ -101,17 +101,16 @@ void render(const std::vector<Sphere> &spheres, const std::vector<Light> &lights
 }
 
 int main() {
-
-    Material blue(Vec2f(0.9,  0.9),Vec3f(0.2, 0.55, 0.91), 50);
-    Material red(Vec2f(0.3, 0.6),Vec3f(0.3, 0.1, 0.1),50);
+    Material blue(Vec2f(0.3,  0.6),Vec3f(0.2, 0.55, 0.91), 50);
+    Material red(Vec2f(0.5,  1),Vec3f(0.3, 0.1, 0.1),50);
     Material green(Vec2f(0.3,  0.6),Vec3f(0.35, .8, 0.42),10);
-    Material yellow(Vec2f(0., 0.6),Vec3f(0.76, 0.68, 0.2),10);
+    Material yellow(Vec2f(0.3,  0.6),Vec3f(0.76, 0.78, 0.31),10);
 
     std::vector<Sphere> spheres;
-    spheres.push_back(Sphere(Vec3f(-3,    0,   -16), 2, blue));
-    spheres.push_back(Sphere(Vec3f(-1.0, -1.5, -12), 2, red));
-    spheres.push_back(Sphere(Vec3f( 1.5, -0.5, -18), 3, yellow));
-    spheres.push_back(Sphere(Vec3f( 7,    5,   -18), 4, green));
+    spheres.push_back(Sphere(Vec3f(-4, 0, -16), 2, yellow));
+    spheres.push_back(Sphere(Vec3f(-2.5, -1, -12), 2, red));
+    spheres.push_back(Sphere(Vec3f( 0, 0, -20), 3, green));
+    spheres.push_back(Sphere(Vec3f( 3.5, 2.5, -15), 3.2, blue));
     std::vector<Light>  lights;
     lights.push_back(Light(Vec3f(-20, 20,  20), 1.5));
     lights.push_back(Light(Vec3f( 30, 50, -25), 1.8));
