@@ -54,7 +54,7 @@ Vec3f cast_ray(const Vec3f &orig, const Vec3f &dir, const std::vector<Sphere> &s
         Vec3f light_dir = (lights[i].position - hit).normalize();
         float light_distance = (lights[i].position - hit).norm();
 
-        Vec3f shadow_orig = light_dir*N < 0 ? hit - N*1e-3 : hit + N*1e-3; // checking if the point lies in the shadow of the lights[i]
+        Vec3f shadow_orig = hit - N*1e-3; // checking if the point lies in the shadow of the lights[i]
         Vec3f shadow_pt, shadow_N;
         Material tmpmaterial;
         if (view_ray_intersect(shadow_orig, light_dir, spheres, shadow_pt, shadow_N, tmpmaterial) && (shadow_pt-shadow_orig).norm() < light_distance)
